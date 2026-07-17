@@ -92,6 +92,18 @@
     font-size:17px; color:var(--muted); max-width:600px; margin:0 0 34px;
   }
   .lede strong{color:var(--text); font-weight:500;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:40px;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace; font-size:13px;
+    padding:11px 18px; border-radius:7px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .12s, border-color .15s, background .15s;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--amber); color:#0B1220; font-weight:500;}
+  .btn-primary:hover{background:#ffc266;}
+  .btn-ghost{border:1px solid var(--line); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--mint); background:rgba(61,220,151,0.08);}
 
   /* KPI STRIP */
   .kpis{
@@ -149,6 +161,37 @@
   .legend span{display:inline-flex; align-items:center; gap:7px;}
   .legend i{width:9px;height:9px;border-radius:2px; display:inline-block;}
 
+  /* interactive topology states */
+  .topo-node{cursor:pointer;}
+  .topo-node rect{transition:opacity .25s, stroke-width .2s, filter .2s;}
+  .topo-node text{transition:opacity .25s;}
+  .topo-line{transition:opacity .3s;}
+  .topo-node.dim rect{opacity:.25;}
+  .topo-node.dim text{opacity:.3;}
+  .topo-line.dim{opacity:.12;}
+  .topo-node.active rect{stroke-width:2.6; filter:drop-shadow(0 0 6px rgba(242,169,60,0.35));}
+  .topo-node:hover rect{stroke-width:2.2;}
+  .topo-node:focus-visible rect{outline:2px solid var(--amber); outline-offset:2px;}
+  .topo-detail{
+    margin-top:18px; padding:16px 18px; background:var(--surface-2); border:1px solid var(--line);
+    border-radius:8px; min-height:64px;
+  }
+  .topo-detail-tag{
+    display:inline-block; font-size:10.5px; letter-spacing:.08em; color:var(--amber);
+    margin-bottom:8px;
+  }
+  .topo-detail p{margin:0; font-size:13.5px; color:var(--muted); line-height:1.6;}
+
+  /* scroll reveal */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  /* scrollspy */
+  nav.links a.current{color:var(--mint);}
+
   /* ABOUT */
   section.about{padding:20px 0 70px;}
   .about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:40px;}
@@ -195,6 +238,49 @@
     background:var(--surface-2); border:1px solid var(--line); color:var(--text);
   }
 
+  /* CASE STUDIES */
+  section.cases{padding:20px 0 70px;}
+  .case-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media (max-width:860px){ .case-grid{grid-template-columns:1fr;} }
+  .case-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px; display:flex; flex-direction:column; gap:12px;
+  }
+  .case-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--mint); align-self:flex-start; border:1px solid rgba(61,220,151,0.35);
+    padding:3px 8px; border-radius:5px;
+  }
+  .case-title{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16.5px; margin:0;}
+  .case-block h5{
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 4px;
+  }
+  .case-block p{font-size:13.5px; color:var(--muted); margin:0;}
+  .case-block strong{color:var(--text); font-weight:500;}
+
+  /* SEEKING */
+  section.seeking{padding:20px 0 70px;}
+  .seeking-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px; display:flex; flex-wrap:wrap; align-items:center; gap:20px; justify-content:space-between;
+  }
+  .role-chips{display:flex; flex-wrap:wrap; gap:10px;}
+  .role-chip{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    padding:8px 14px; border-radius:20px; border:1px solid var(--amber);
+    color:var(--text); background:rgba(242,169,60,0.08);
+  }
+
+  /* TESTIMONIAL */
+  section.testimonial{padding:20px 0 70px;}
+  .quote-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px; border-left:3px solid var(--mint);
+  }
+  .quote-card p.q{font-size:15.5px; color:var(--text); font-style:italic; margin:0 0 12px;}
+  .quote-card p.attr{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--muted); margin:0;}
+
   /* CERTS */
   section.certs{padding:20px 0 70px;}
   .cert-row{display:flex; flex-wrap:wrap; gap:14px;}
@@ -224,9 +310,10 @@
     <div class="brand">MAJJI ARVIND<span>.</span></div>
     <nav class="links">
       <a href="#topology">Role</a>
+      <a href="#casestudies">Case Studies</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
-      <a href="#certs">Certs</a>
+      <a href="#seeking">Seeking</a>
     </nav>
     <a class="navcta" href="mailto:majjiarvind@gmail.com">Contact</a>
   </div>
@@ -236,7 +323,7 @@
 
   <section class="hero">
     <div class="eyebrow"><span class="dot pulse"></span>AVAILABLE — OPEN TO TECHNICAL PRODUCT OWNER ROLES</div>
-    <h1>Turning telecom<br>roadmaps into <span class="accent">shipped features.</span></h1>
+    <h1>Turning complex<br>requirements into <span class="accent">shipped features.</span></h1>
     <p class="lede">
       Technical Product Owner with <strong>5+ years</strong> across software engineering and Agile product ownership.
       Currently supporting Ericsson R&D's Network Manager (ENM) platform through TCS — owning the backlog across
@@ -244,83 +331,88 @@
       to everyone who depends on it.
     </p>
 
-    <div class="kpis">
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="./resume.pdf" download>↓ Download Resume</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/arvind-majji" target="_blank" rel="noopener">View LinkedIn</a>
+    </div>
+
+    <div class="kpis" id="kpis">
       <div class="kpi">
         <div class="label"><span class="stat-dot"></span>Sprint Predictability</div>
-        <div class="value">70<small>%</small> → 90<small>%</small></div>
+        <div class="value">70<small>%</small> → <span class="count" data-target="90">0</span><small>%</small></div>
       </div>
       <div class="kpi">
         <div class="label"><span class="stat-dot"></span>Defect Leakage</div>
-        <div class="value">−30<small>%</small></div>
+        <div class="value">−<span class="count" data-target="30">0</span><small>%</small></div>
       </div>
       <div class="kpi">
         <div class="label"><span class="stat-dot"></span>PO Doc. Productivity</div>
-        <div class="value">+50<small>%</small></div>
+        <div class="value">+<span class="count" data-target="50">0</span><small>%</small></div>
       </div>
     </div>
   </section>
 
-  <section class="topology" id="topology">
+  <section class="topology reveal" id="topology">
     <div class="section-head">
       <h2>How the role is wired</h2>
-      <p class="section-sub">Not a job title so much as a set of live connections — one backlog, three product domains, three AI tools, and the people on both sides of it.</p>
+      <p class="section-sub">Not a job title so much as a set of live connections — click a node to see how it fits in.</p>
     </div>
     <div class="topo-card">
-      <svg class="topomap" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing Product Owner role connected to Configuration, Fault, and Performance Management domains, to AI tools KIRO, GitHub Copilot, and Amazon Q, and to TCS Project Managers, Study Analysts, and Ericsson stakeholders">
+      <svg class="topomap" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive diagram showing Product Owner role connected to Configuration, Fault, and Performance Management domains, to AI tools KIRO, GitHub Copilot, and Amazon Q, and to TCS Project Managers, Study Analysts, and Ericsson stakeholders. Click any node for details.">
         <!-- connecting lines: core to domains -->
-        <path class="topo-line live" d="M360,190 C300,150 260,110 210,80"/>
-        <path class="topo-line live" d="M360,190 C360,140 360,110 360,70"/>
-        <path class="topo-line live" d="M360,190 C420,150 460,110 510,80"/>
+        <path class="topo-line live" data-line="cm" d="M360,190 C300,150 260,110 210,80"/>
+        <path class="topo-line live" data-line="fm" d="M360,190 C360,140 360,110 360,70"/>
+        <path class="topo-line live" data-line="perf" d="M360,190 C420,150 460,110 510,80"/>
         <!-- core to tools -->
-        <path class="topo-line live" d="M360,210 C300,250 260,280 210,310"/>
-        <path class="topo-line live" d="M360,210 C360,260 360,285 360,310"/>
-        <path class="topo-line live" d="M360,210 C420,250 460,280 510,310"/>
+        <path class="topo-line live" data-line="kiro" d="M360,210 C300,250 260,280 210,310"/>
+        <path class="topo-line live" data-line="copilot" d="M360,210 C360,260 360,285 360,310"/>
+        <path class="topo-line live" data-line="amazonq" d="M360,210 C420,250 460,280 510,310"/>
         <!-- core to people (right side) -->
-        <path class="topo-line" d="M390,190 C480,170 560,175 630,190"/>
+        <path class="topo-line" data-line="people" d="M390,190 C480,170 560,175 630,190"/>
 
         <!-- domain nodes -->
-        <g class="topo-node topo-domain">
+        <g class="topo-node topo-domain" data-node="cm" tabindex="0" role="button" aria-label="Configuration Management">
           <rect x="150" y="46" width="120" height="42" rx="6"/>
           <text x="210" y="64" font-size="11" text-anchor="middle">CONFIG. MGMT</text>
           <text x="210" y="78" font-size="9" text-anchor="middle" class="sub">domain</text>
         </g>
-        <g class="topo-node topo-domain">
+        <g class="topo-node topo-domain" data-node="fm" tabindex="0" role="button" aria-label="Fault Management">
           <rect x="300" y="36" width="120" height="42" rx="6"/>
           <text x="360" y="54" font-size="11" text-anchor="middle">FAULT MGMT</text>
           <text x="360" y="68" font-size="9" text-anchor="middle" class="sub">domain</text>
         </g>
-        <g class="topo-node topo-domain">
+        <g class="topo-node topo-domain" data-node="perf" tabindex="0" role="button" aria-label="Performance Management">
           <rect x="450" y="46" width="120" height="42" rx="6"/>
           <text x="510" y="64" font-size="11" text-anchor="middle">PERF. MGMT</text>
           <text x="510" y="78" font-size="9" text-anchor="middle" class="sub">domain</text>
         </g>
 
         <!-- core node -->
-        <g class="topo-node topo-core">
+        <g class="topo-node topo-core" data-node="core" tabindex="0" role="button" aria-label="Product Owner (core role)">
           <rect x="290" y="170" width="140" height="46" rx="7"/>
           <text x="360" y="190" font-size="12" text-anchor="middle" font-weight="600">PRODUCT OWNER</text>
           <text x="360" y="204" font-size="9" text-anchor="middle" class="sub">ENM · TCS × ERICSSON</text>
         </g>
 
         <!-- tool nodes -->
-        <g class="topo-node topo-tool">
+        <g class="topo-node topo-tool" data-node="kiro" tabindex="0" role="button" aria-label="KIRO AI agent">
           <rect x="150" y="308" width="120" height="42" rx="6"/>
           <text x="210" y="326" font-size="11" text-anchor="middle">KIRO</text>
           <text x="210" y="340" font-size="9" text-anchor="middle" class="sub">AI agent</text>
         </g>
-        <g class="topo-node topo-tool">
+        <g class="topo-node topo-tool" data-node="copilot" tabindex="0" role="button" aria-label="GitHub Copilot">
           <rect x="300" y="308" width="120" height="42" rx="6"/>
           <text x="360" y="326" font-size="10.5" text-anchor="middle">GITHUB COPILOT</text>
           <text x="360" y="340" font-size="9" text-anchor="middle" class="sub">AI pair</text>
         </g>
-        <g class="topo-node topo-tool">
+        <g class="topo-node topo-tool" data-node="amazonq" tabindex="0" role="button" aria-label="Amazon Q">
           <rect x="450" y="308" width="120" height="42" rx="6"/>
           <text x="510" y="326" font-size="11" text-anchor="middle">AMAZON Q</text>
           <text x="510" y="340" font-size="9" text-anchor="middle" class="sub">AI assist</text>
         </g>
 
         <!-- people node -->
-        <g class="topo-node topo-people">
+        <g class="topo-node topo-people" data-node="people" tabindex="0" role="button" aria-label="TCS Project Managers, Study Analysts, and Ericsson stakeholders">
           <rect x="616" y="166" width="95" height="52" rx="6"/>
           <text x="663" y="184" font-size="9.5" text-anchor="middle">TCS PM ·</text>
           <text x="663" y="196" font-size="9.5" text-anchor="middle">ANALYSTS ·</text>
@@ -333,10 +425,83 @@
         <span><i style="background:#5B8CFF"></i>AI tooling</span>
         <span><i style="background:var(--muted)"></i>Stakeholders</span>
       </div>
+      <div class="topo-detail" id="topoDetail">
+        <span class="topo-detail-tag mono">PRODUCT OWNER</span>
+        <p id="topoDetailText">The role sits at the center — every node here is a live connection I manage day to day. Click any node to see how it fits in.</p>
+      </div>
     </div>
   </section>
 
-  <section class="about">
+  <section class="cases reveal" id="casestudies">
+    <div class="section-head">
+      <h2>Case studies</h2>
+      <p class="section-sub">A closer look at how three specific pieces of work actually happened — not just the outcome.</p>
+    </div>
+    <div class="case-grid">
+
+      <div class="case-card">
+        <span class="case-tag">Backlog · CM</span>
+        <p class="case-title">Ericsson ENM — Configuration Management</p>
+        <div class="case-block">
+          <h5>Challenge</h5>
+          <p>Roadmap priorities from Ericsson Product Management needed to become sprint-ready backlog items, but
+          requirements arrived at varying levels of detail from multiple Study Analysts.</p>
+        </div>
+        <div class="case-block">
+          <h5>Role</h5>
+          <p>Owned the CM backlog end-to-end — worked with Study Analysts to clarify requirements, wrote user stories
+          and acceptance criteria, and refined priority against engineering capacity and dependencies.</p>
+        </div>
+        <div class="case-block">
+          <h5>Outcome</h5>
+          <p><strong>Sprint predictability improved from 70% to 90%</strong> through tighter Definition of Ready and
+          dependency tracking.</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <span class="case-tag">Backlog · FM/PM</span>
+        <p class="case-title">Ericsson ENM — Fault &amp; Performance Management</p>
+        <div class="case-block">
+          <h5>Challenge</h5>
+          <p>Production defects were leaking into later stages of delivery, often traced back to unclear or
+          incomplete acceptance criteria at the story level.</p>
+        </div>
+        <div class="case-block">
+          <h5>Role</h5>
+          <p>Strengthened acceptance criteria quality, supported earlier QA validation, and ran feature-impact
+          analysis on new requests before they entered the backlog.</p>
+        </div>
+        <div class="case-block">
+          <h5>Outcome</h5>
+          <p><strong>Production defect leakage reduced by 30%</strong>, with fewer issues surfacing after release.</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <span class="case-tag">AI Tooling</span>
+        <p class="case-title">AI-Powered Dashboard for Product Owners</p>
+        <div class="case-block">
+          <h5>Challenge</h5>
+          <p>Sprint progress, engineer workload, and delivery health were scattered across Jira, Confluence, and
+          Jenkins — no single view existed for Product Owners or Project Managers.</p>
+        </div>
+        <div class="case-block">
+          <h5>Role</h5>
+          <p>Configured and integrated the KIRO AI agent with Jira, Confluence, and Jenkins via the Model Context
+          Protocol, then designed role-based dashboards on top of it for POs, PMs, Scrum Masters, and engineers.</p>
+        </div>
+        <div class="case-block">
+          <h5>Outcome</h5>
+          <p><strong>Product Owner documentation productivity improved by 50%</strong>, with real-time visibility
+          replacing manual status chasing.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about reveal">
     <div class="about-grid">
       <div class="about">
         <div class="section-head">
@@ -366,7 +531,7 @@
     </div>
   </section>
 
-  <section class="timeline" id="experience">
+  <section class="timeline reveal" id="experience">
     <div class="section-head">
       <h2>Experience</h2>
     </div>
@@ -393,7 +558,7 @@
     </div>
   </section>
 
-  <section class="skills" id="skills">
+  <section class="skills reveal" id="skills">
     <div class="section-head">
       <h2>Skills</h2>
     </div>
@@ -446,7 +611,7 @@
     </div>
   </section>
 
-  <section class="certs" id="certs">
+  <section class="certs reveal" id="certs">
     <div class="section-head">
       <h2>Certifications &amp; Recognition</h2>
     </div>
@@ -455,6 +620,34 @@
       <div class="cert"><strong>AI Product Management: Strategy, Roadmaps &amp; ChatGPT</strong>Udemy</div>
       <div class="cert"><strong>Product Management + Agile Product Manager + Scrum</strong>Udemy</div>
       <div class="cert"><strong>Star of the Month / Star of the Quarter</strong>TCS — delivery performance recognition</div>
+    </div>
+  </section>
+
+  <section class="seeking reveal" id="seeking">
+    <div class="section-head">
+      <h2>Currently seeking</h2>
+    </div>
+    <div class="seeking-card">
+      <div class="role-chips">
+        <span class="role-chip">Technical Product Owner</span>
+        <span class="role-chip">Product Owner</span>
+        <span class="role-chip">Platform Product Owner</span>
+      </div>
+      <div class="mono" style="color:var(--muted); font-size:13px;">Bengaluru · Hyderabad · Remote</div>
+    </div>
+  </section>
+
+  <section class="testimonial reveal" id="testimonial">
+    <div class="section-head">
+      <h2>What colleagues say</h2>
+    </div>
+    <div class="quote-card">
+      <p class="q">"An astute communicator, knows how to balance different stakeholder expectations without letting
+      it affect the team. Understands requirements of stakeholders and plans contingencies ahead of time. As a
+      Product Owner, goes to great lengths to remove impediments in delivering the Sprint goals. His prior developer
+      experience helps in understanding the various challenges faced by a team in Sprint and hence mitigates
+      over-committing to help achieve the goals. An asset to have while managing the various needs of customers."</p>
+      <p class="attr">— Nikhil Pusuluri, IT Analyst, Tata Consultancy Services (direct report)</p>
     </div>
   </section>
 
@@ -475,5 +668,115 @@
   <div class="wrap foot-note">© Majji Arvind Kumar — Bengaluru, India</div>
 </footer>
 
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Topology: node detail data ---- */
+  var details = {
+    core:    { tag:'PRODUCT OWNER', text:'The role sits at the center — every node here is a live connection I manage day to day. Click any node to see how it fits in.' },
+    cm:      { tag:'CONFIGURATION MANAGEMENT', text:'One of three ENM product domains I own the backlog for — provisioning and configuration workflows across the network, translated into sprint-ready user stories.' },
+    fm:      { tag:'FAULT MANAGEMENT', text:'Backlog ownership for fault detection and resolution workflows within ENM — tightening acceptance criteria here directly reduced production defect leakage by 30%.' },
+    perf:    { tag:'PERFORMANCE MANAGEMENT', text:'The third ENM domain — KPIs, throughput, and network health monitoring, prioritized alongside CM and FM based on roadmap value and engineering capacity.' },
+    kiro:    { tag:'KIRO — AI AGENT', text:'An enterprise AI agent I configured and integrated with Jira, Confluence, and Jenkins via the Model Context Protocol, powering the real-time delivery dashboards the team uses.' },
+    copilot: { tag:'GITHUB COPILOT', text:'Used alongside KIRO to accelerate acceptance-criteria drafting and sprint documentation — part of the same AI-assisted toolchain that lifted documentation productivity 50%.' },
+    amazonq: { tag:'AMAZON Q', text:'Supports backlog refinement and documentation workflows as a third leg of the AI toolchain, alongside KIRO and GitHub Copilot.' },
+    people:  { tag:'STAKEHOLDERS', text:'TCS Project Managers, Study Analysts, and Ericsson stakeholders I coordinate with daily — turning roadmap priorities and demo feedback into the next sprint\'s backlog.' }
+  };
+
+  var nodes = document.querySelectorAll('.topo-node');
+  var lines = document.querySelectorAll('.topo-line');
+  var detailTag = document.getElementById('topoDetail') ? document.getElementById('topoDetail').querySelector('.topo-detail-tag') : null;
+  var detailText = document.getElementById('topoDetailText');
+
+  function setActive(id){
+    nodes.forEach(function(n){
+      var isSelf = n.getAttribute('data-node') === id;
+      var isCore = n.getAttribute('data-node') === 'core';
+      var show = (id === 'core') || isSelf || isCore;
+      n.classList.toggle('active', isSelf);
+      n.classList.toggle('dim', !show);
+    });
+    lines.forEach(function(l){
+      var lineFor = l.getAttribute('data-line');
+      var show = (id === 'core') || lineFor === id;
+      l.classList.toggle('dim', !show);
+    });
+    if(details[id] && detailText){
+      detailTag.textContent = details[id].tag;
+      detailText.textContent = details[id].text;
+    }
+  }
+
+  nodes.forEach(function(n){
+    n.addEventListener('click', function(){ setActive(n.getAttribute('data-node')); });
+    n.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); setActive(n.getAttribute('data-node')); }
+    });
+  });
+
+  /* ---- KPI count-up ---- */
+  var kpis = document.getElementById('kpis');
+  var counted = false;
+  function animateCounts(){
+    if(counted) return;
+    counted = true;
+    document.querySelectorAll('.count').forEach(function(el){
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      if(reduceMotion){ el.textContent = target; return; }
+      var start = null;
+      var duration = 900;
+      function step(ts){
+        if(!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if(progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* ---- Scroll reveal + KPI trigger + scrollspy ---- */
+  var sections = document.querySelectorAll('.reveal');
+  var navLinks = document.querySelectorAll('nav.links a');
+
+  if('IntersectionObserver' in window){
+    var revealObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    sections.forEach(function(s){ revealObserver.observe(s); });
+
+    if(kpis){
+      var kpiObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){ animateCounts(); kpiObserver.disconnect(); }
+        });
+      }, { threshold: 0.4 });
+      kpiObserver.observe(kpis);
+    }
+
+    var spySections = document.querySelectorAll('main [id]');
+    var spyObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          navLinks.forEach(function(a){
+            a.classList.toggle('current', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    spySections.forEach(function(s){ spyObserver.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+    animateCounts();
+  }
+})();
+</script>
 </body>
 </html>

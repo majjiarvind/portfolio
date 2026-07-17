@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Majji Arvind Kumar — Technical Product Owner</title>
+<meta name="description" content="Technical Product Owner supporting Ericsson R&D's Network Manager platform via TCS. Agile delivery, telecom NMS, AI-assisted product workflows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1220;
+    --surface:#121B2E;
+    --surface-2:#0E1727;
+    --line:#223049;
+    --text:#E8ECF3;
+    --muted:#8B96AB;
+    --amber:#F2A93C;
+    --mint:#3DDC97;
+    --radius:10px;
+    --maxw:960px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(242,169,60,0.09), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(61,220,151,0.07), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--mint);
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:14px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--mint); flex:none;}
+  @media (prefers-reduced-motion: no-preference){
+    .dot.pulse{ animation:pulse 2.2s ease-in-out infinite; }
+    @keyframes pulse{
+      0%,100%{ box-shadow:0 0 0 0 rgba(61,220,151,.5); }
+      50%{ box-shadow:0 0 0 5px rgba(61,220,151,0); }
+    }
+  }
+
+  :focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  /* NAV */
+  header.nav{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter:blur(10px);
+    background:rgba(11,18,32,0.75);
+    border-bottom:1px solid var(--line);
+  }
+  .navrow{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .brand{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; letter-spacing:.01em;}
+  .brand span{color:var(--amber);}
+  nav.links{display:flex; gap:22px; font-size:13px; color:var(--muted);}
+  nav.links a{text-decoration:none; transition:color .15s;}
+  nav.links a:hover{color:var(--text);}
+  .navcta{
+    font-family:'IBM Plex Mono',monospace; font-size:12px;
+    border:1px solid var(--line); padding:7px 14px; border-radius:6px;
+    text-decoration:none; color:var(--text); transition:border-color .15s, background .15s;
+  }
+  .navcta:hover{border-color:var(--amber); background:rgba(242,169,60,0.08);}
+
+  /* HERO */
+  .hero{padding:76px 0 40px;}
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(34px,5.4vw,54px);
+    line-height:1.05;
+    margin:0 0 16px;
+    letter-spacing:-.01em;
+  }
+  h1 .accent{color:var(--amber);}
+  .lede{
+    font-size:17px; color:var(--muted); max-width:600px; margin:0 0 34px;
+  }
+  .lede strong{color:var(--text); font-weight:500;}
+
+  /* KPI STRIP */
+  .kpis{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin-bottom:56px;
+  }
+  .kpi{background:var(--surface); padding:20px 18px;}
+  .kpi .label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:10px;
+    display:flex; align-items:center; gap:7px;
+  }
+  .kpi .stat-dot{width:5px;height:5px;border-radius:50%;background:var(--mint); flex:none;}
+  .kpi .value{
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(22px,3vw,30px); color:var(--text);
+  }
+  .kpi .value small{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--muted); font-weight:400;}
+  @media (max-width:640px){ .kpis{grid-template-columns:1fr;} }
+
+  /* SIGNATURE: role topology */
+  section.topology{padding:20px 0 70px;}
+  .section-head{margin-bottom:28px;}
+  h2{
+    font-family:'Space Grotesk',sans-serif; font-weight:600;
+    font-size:22px; margin:0 0 8px;
+  }
+  .section-sub{color:var(--muted); font-size:14.5px; max-width:560px;}
+  .topo-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 20px 20px;
+  }
+  svg.topomap{width:100%; height:auto; display:block;}
+  .topo-node text{font-family:'IBM Plex Mono',monospace; fill:var(--text);}
+  .topo-node .sub{fill:var(--muted);}
+  .topo-line{stroke:var(--line); stroke-width:1.4; fill:none;}
+  @media (prefers-reduced-motion:no-preference){
+    .topo-line.live{
+      stroke-dasharray:4 5;
+      animation:flow 2.4s linear infinite;
+    }
+    @keyframes flow{ to{ stroke-dashoffset:-90; } }
+  }
+  .topo-core rect{fill:var(--surface-2); stroke:var(--amber); stroke-width:1.4;}
+  .topo-domain rect{fill:var(--surface-2); stroke:var(--mint); stroke-width:1.2;}
+  .topo-tool rect{fill:var(--surface-2); stroke:#5B8CFF; stroke-width:1.2;}
+  .topo-people rect{fill:var(--surface-2); stroke:var(--muted); stroke-width:1.1;}
+  .legend{display:flex; flex-wrap:wrap; gap:18px; margin-top:18px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted);}
+  .legend span{display:inline-flex; align-items:center; gap:7px;}
+  .legend i{width:9px;height:9px;border-radius:2px; display:inline-block;}
+
+  /* ABOUT */
+  section.about{padding:20px 0 70px;}
+  .about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:40px;}
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
+  .about p{color:var(--muted); font-size:15px; margin:0 0 16px;}
+  .about p strong{color:var(--text); font-weight:500;}
+  .sidecard{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px;
+  }
+  .sidecard h3{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--mint); margin:0 0 14px;
+  }
+  .sidecard ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .sidecard li{font-size:13.5px; color:var(--muted); display:flex; gap:9px;}
+  .sidecard li::before{content:"▸"; color:var(--amber); flex:none;}
+
+  /* TIMELINE */
+  section.timeline{padding:20px 0 70px;}
+  .tl-item{
+    display:grid; grid-template-columns:150px 1fr; gap:20px;
+    padding:22px 0; border-top:1px solid var(--line);
+  }
+  .tl-item:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:600px){ .tl-item{grid-template-columns:1fr;} }
+  .tl-date{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--amber);}
+  .tl-role{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; margin:0 0 4px;}
+  .tl-org{color:var(--muted); font-size:13.5px; margin:0 0 10px;}
+  .tl-desc{color:var(--muted); font-size:14px; margin:0;}
+
+  /* SKILLS */
+  section.skills{padding:20px 0 70px;}
+  .skill-groups{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media (max-width:640px){ .skill-groups{grid-template-columns:1fr;} }
+  .skill-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 16px;}
+  .skill-card h4{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 12px;
+  }
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-size:12.5px; padding:6px 10px; border-radius:6px;
+    background:var(--surface-2); border:1px solid var(--line); color:var(--text);
+  }
+
+  /* CERTS */
+  section.certs{padding:20px 0 70px;}
+  .cert-row{display:flex; flex-wrap:wrap; gap:14px;}
+  .cert{
+    flex:1 1 260px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px 18px; font-size:13.5px; color:var(--muted);
+  }
+  .cert strong{display:block; color:var(--text); font-size:14.5px; font-weight:500; margin-bottom:4px;}
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--line);
+    padding:44px 0 60px;
+  }
+  .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  .footer-cta h2{margin-bottom:10px;}
+  .contact-list{display:flex; flex-direction:column; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:13px;}
+  .contact-list a{text-decoration:none; color:var(--muted); transition:color .15s;}
+  .contact-list a:hover{color:var(--mint);}
+  .foot-note{color:var(--muted); font-size:12px; margin-top:30px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap navrow">
+    <div class="brand">MAJJI ARVIND<span>.</span></div>
+    <nav class="links">
+      <a href="#topology">Role</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#certs">Certs</a>
+    </nav>
+    <a class="navcta" href="mailto:majjiarvind@gmail.com">Contact</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow"><span class="dot pulse"></span>AVAILABLE — OPEN TO TECHNICAL PRODUCT OWNER ROLES</div>
+    <h1>Turning telecom<br>roadmaps into <span class="accent">shipped features.</span></h1>
+    <p class="lede">
+      Technical Product Owner with <strong>5+ years</strong> across software engineering and Agile product ownership.
+      Currently supporting Ericsson R&D's Network Manager (ENM) platform through TCS — owning the backlog across
+      Configuration, Fault, and Performance Management, and building AI-assisted tooling that keeps delivery visible
+      to everyone who depends on it.
+    </p>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="label"><span class="stat-dot"></span>Sprint Predictability</div>
+        <div class="value">70<small>%</small> → 90<small>%</small></div>
+      </div>
+      <div class="kpi">
+        <div class="label"><span class="stat-dot"></span>Defect Leakage</div>
+        <div class="value">−30<small>%</small></div>
+      </div>
+      <div class="kpi">
+        <div class="label"><span class="stat-dot"></span>PO Doc. Productivity</div>
+        <div class="value">+50<small>%</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topology" id="topology">
+    <div class="section-head">
+      <h2>How the role is wired</h2>
+      <p class="section-sub">Not a job title so much as a set of live connections — one backlog, three product domains, three AI tools, and the people on both sides of it.</p>
+    </div>
+    <div class="topo-card">
+      <svg class="topomap" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing Product Owner role connected to Configuration, Fault, and Performance Management domains, to AI tools KIRO, GitHub Copilot, and Amazon Q, and to TCS Project Managers, Study Analysts, and Ericsson stakeholders">
+        <!-- connecting lines: core to domains -->
+        <path class="topo-line live" d="M360,190 C300,150 260,110 210,80"/>
+        <path class="topo-line live" d="M360,190 C360,140 360,110 360,70"/>
+        <path class="topo-line live" d="M360,190 C420,150 460,110 510,80"/>
+        <!-- core to tools -->
+        <path class="topo-line live" d="M360,210 C300,250 260,280 210,310"/>
+        <path class="topo-line live" d="M360,210 C360,260 360,285 360,310"/>
+        <path class="topo-line live" d="M360,210 C420,250 460,280 510,310"/>
+        <!-- core to people (right side) -->
+        <path class="topo-line" d="M390,190 C480,170 560,175 630,190"/>
+
+        <!-- domain nodes -->
+        <g class="topo-node topo-domain">
+          <rect x="150" y="46" width="120" height="42" rx="6"/>
+          <text x="210" y="64" font-size="11" text-anchor="middle">CONFIG. MGMT</text>
+          <text x="210" y="78" font-size="9" text-anchor="middle" class="sub">domain</text>
+        </g>
+        <g class="topo-node topo-domain">
+          <rect x="300" y="36" width="120" height="42" rx="6"/>
+          <text x="360" y="54" font-size="11" text-anchor="middle">FAULT MGMT</text>
+          <text x="360" y="68" font-size="9" text-anchor="middle" class="sub">domain</text>
+        </g>
+        <g class="topo-node topo-domain">
+          <rect x="450" y="46" width="120" height="42" rx="6"/>
+          <text x="510" y="64" font-size="11" text-anchor="middle">PERF. MGMT</text>
+          <text x="510" y="78" font-size="9" text-anchor="middle" class="sub">domain</text>
+        </g>
+
+        <!-- core node -->
+        <g class="topo-node topo-core">
+          <rect x="290" y="170" width="140" height="46" rx="7"/>
+          <text x="360" y="190" font-size="12" text-anchor="middle" font-weight="600">PRODUCT OWNER</text>
+          <text x="360" y="204" font-size="9" text-anchor="middle" class="sub">ENM · TCS × ERICSSON</text>
+        </g>
+
+        <!-- tool nodes -->
+        <g class="topo-node topo-tool">
+          <rect x="150" y="308" width="120" height="42" rx="6"/>
+          <text x="210" y="326" font-size="11" text-anchor="middle">KIRO</text>
+          <text x="210" y="340" font-size="9" text-anchor="middle" class="sub">AI agent</text>
+        </g>
+        <g class="topo-node topo-tool">
+          <rect x="300" y="308" width="120" height="42" rx="6"/>
+          <text x="360" y="326" font-size="10.5" text-anchor="middle">GITHUB COPILOT</text>
+          <text x="360" y="340" font-size="9" text-anchor="middle" class="sub">AI pair</text>
+        </g>
+        <g class="topo-node topo-tool">
+          <rect x="450" y="308" width="120" height="42" rx="6"/>
+          <text x="510" y="326" font-size="11" text-anchor="middle">AMAZON Q</text>
+          <text x="510" y="340" font-size="9" text-anchor="middle" class="sub">AI assist</text>
+        </g>
+
+        <!-- people node -->
+        <g class="topo-node topo-people">
+          <rect x="616" y="166" width="95" height="52" rx="6"/>
+          <text x="663" y="184" font-size="9.5" text-anchor="middle">TCS PM ·</text>
+          <text x="663" y="196" font-size="9.5" text-anchor="middle">ANALYSTS ·</text>
+          <text x="663" y="208" font-size="9.5" text-anchor="middle">ERICSSON</text>
+        </g>
+      </svg>
+      <div class="legend">
+        <span><i style="background:var(--amber)"></i>Product Owner (core)</span>
+        <span><i style="background:var(--mint)"></i>Product domains</span>
+        <span><i style="background:#5B8CFF"></i>AI tooling</span>
+        <span><i style="background:var(--muted)"></i>Stakeholders</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-grid">
+      <div class="about">
+        <div class="section-head">
+          <h2>About</h2>
+        </div>
+        <p>I began as a <strong>Java Developer</strong>, building REST API integrations and automating operational
+        workflows for Ericsson's Network Manager platform — work that included shell-scripting automation that cut
+        manual effort by 80% and root-cause analysis on production incidents.</p>
+        <p>That engineering grounding is still how I approach product ownership today. I don't just write user
+        stories and manage a backlog — I configured and integrated an enterprise AI agent (<strong>KIRO</strong>)
+        with our Jira, Confluence, and Jenkins environment using the Model Context Protocol, then built role-based
+        dashboards on top of it so Product Owners, Project Managers, and engineers can all see delivery health in
+        real time.</p>
+        <p>I work daily with TCS Project Managers, Study Analysts, developers, QA, and Ericsson stakeholders —
+        running sprint ceremonies, leading demos, and turning feedback into the next sprint's priorities.</p>
+      </div>
+      <div class="sidecard">
+        <h3>Quick facts</h3>
+        <ul>
+          <li>Based in Bengaluru, India</li>
+          <li>5+ years, software engineering → product ownership</li>
+          <li>Domain: Telecom OSS / Network Management Systems</li>
+          <li>Currently: TCS, supporting Ericsson R&D</li>
+          <li>Open to: Technical Product Owner / Product Owner roles</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline" id="experience">
+    <div class="section-head">
+      <h2>Experience</h2>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date mono">APR 2023 — PRESENT</div>
+      <div>
+        <p class="tl-role">Technical Product Owner</p>
+        <p class="tl-org">Tata Consultancy Services · Client: Ericsson R&D · Project: Ericsson Network Manager (ENM)</p>
+        <p class="tl-desc">Own the product backlog across Configuration, Fault, and Performance Management domains.
+        Translate roadmap priorities into user stories and acceptance criteria, run Agile ceremonies, lead stakeholder
+        demos, and built AI-powered dashboards giving the team real-time delivery visibility.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date mono">APR 2021 — MAR 2023</div>
+      <div>
+        <p class="tl-role">Java Developer</p>
+        <p class="tl-org">Tata Consultancy Services</p>
+        <p class="tl-desc">Built REST API integration modules for Ericsson Network Manager, automated operational
+        workflows with shell scripting, and performed root-cause analysis on production incidents to reduce MTTR.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="section-head">
+      <h2>Skills</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h4>Product &amp; Agile</h4>
+        <div class="chips">
+          <span class="chip">Backlog Management</span>
+          <span class="chip">User Story Writing</span>
+          <span class="chip">Acceptance Criteria</span>
+          <span class="chip">Sprint Planning</span>
+          <span class="chip">Release Management</span>
+          <span class="chip">Stakeholder Management</span>
+          <span class="chip">KPI-Driven Prioritization</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>Telecom Domain</h4>
+        <div class="chips">
+          <span class="chip">Ericsson ENM</span>
+          <span class="chip">Telecom OSS/NMS</span>
+          <span class="chip">Configuration Mgmt</span>
+          <span class="chip">Fault Mgmt</span>
+          <span class="chip">Performance Mgmt</span>
+          <span class="chip">FCAPS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>AI &amp; Tooling</h4>
+        <div class="chips">
+          <span class="chip">KIRO</span>
+          <span class="chip">GitHub Copilot</span>
+          <span class="chip">Amazon Q</span>
+          <span class="chip">Prompt Engineering</span>
+          <span class="chip">Workflow Automation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>Technical</h4>
+        <div class="chips">
+          <span class="chip">Core Java</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Shell Scripting</span>
+          <span class="chip">Jira</span>
+          <span class="chip">Confluence</span>
+          <span class="chip">Jenkins</span>
+          <span class="chip">Gerrit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="certs" id="certs">
+    <div class="section-head">
+      <h2>Certifications &amp; Recognition</h2>
+    </div>
+    <div class="cert-row">
+      <div class="cert"><strong>Certified Product Owner</strong>Udemy</div>
+      <div class="cert"><strong>AI Product Management: Strategy, Roadmaps &amp; ChatGPT</strong>Udemy</div>
+      <div class="cert"><strong>Product Management + Agile Product Manager + Scrum</strong>Udemy</div>
+      <div class="cert"><strong>Star of the Month / Star of the Quarter</strong>TCS — delivery performance recognition</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-cta">
+      <h2>Let's talk.</h2>
+      <p class="section-sub">Open to Technical Product Owner and Product Owner roles in Bengaluru, Hyderabad, or remote.</p>
+    </div>
+    <div class="contact-list">
+      <a href="mailto:majjiarvind@gmail.com">majjiarvind@gmail.com</a>
+      <a href="tel:+919394752636">+91 93947 52636</a>
+      <a href="https://linkedin.com/in/arvind-majji" target="_blank" rel="noopener">linkedin.com/in/arvind-majji</a>
+    </div>
+  </div>
+  <div class="wrap foot-note">© Majji Arvind Kumar — Bengaluru, India</div>
+</footer>
+
+</body>
+</html>

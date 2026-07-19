@@ -86,7 +86,43 @@
   .icon-btn svg{width:16px; height:16px; fill:var(--text);}
 
   /* HERO */
-  .hero{padding:76px 0 40px;}
+  .hero{padding:76px 0 40px; position:relative; overflow:hidden;}
+  .hero-bg{
+    position:absolute; inset:-40px -24px auto -24px; height:460px;
+    background-image:radial-gradient(circle, rgba(139,150,171,0.16) 1px, transparent 1.4px);
+    background-size:26px 26px;
+    -webkit-mask-image:linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+    mask-image:linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+    pointer-events:none; z-index:0;
+  }
+  .hero-sweep{
+    position:absolute; inset:-40px -24px auto -24px; height:460px;
+    background:linear-gradient(180deg, transparent 0%, rgba(61,220,151,0.10) 45%, transparent 60%);
+    pointer-events:none; z-index:0;
+  }
+  .hero-packet{
+    position:absolute; width:4px; height:4px; border-radius:50%;
+    background:var(--mint); opacity:0; pointer-events:none; z-index:0;
+    box-shadow:0 0 6px 1px rgba(61,220,151,0.6);
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .hero-sweep{ animation:sweep 7s ease-in-out infinite; }
+    @keyframes sweep{
+      0%{ transform:translateY(-70%); }
+      100%{ transform:translateY(70%); }
+    }
+    .hero-packet{ animation:packetDrift linear infinite; }
+    @keyframes packetDrift{
+      0%{ opacity:0; transform:translate(0,0); }
+      8%{ opacity:.9; }
+      92%{ opacity:.7; }
+      100%{ opacity:0; transform:translate(var(--dx,60px), var(--dy,-160px)); }
+    }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero-sweep, .hero-packet{ display:none; }
+  }
+  .hero > .hero-grid{ position:relative; z-index:1; }
   .hero-grid{display:grid; grid-template-columns:1fr auto; gap:36px; align-items:start;}
   @media (max-width:700px){ .hero-grid{grid-template-columns:1fr;} }
   .hero-photo{
@@ -339,7 +375,7 @@
 
 <header class="nav">
   <div class="wrap navrow">
-    <div class="brand">MAJJI ARVIND KUMAR<span>.</span></div>
+    <div class="brand">MAJJI ARVIND<span>.</span></div>
     <nav class="links">
       <a href="#topology">Role</a>
       <a href="#casestudies">Case Studies</a>
@@ -359,13 +395,20 @@
 <main class="wrap">
 
   <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-sweep" aria-hidden="true"></div>
+    <span class="hero-packet" aria-hidden="true" style="left:8%; top:60%; --dx:70px; --dy:-180px; animation-duration:9s; animation-delay:0s;"></span>
+    <span class="hero-packet" aria-hidden="true" style="left:22%; top:80%; --dx:50px; --dy:-220px; animation-duration:11s; animation-delay:2.5s;"></span>
+    <span class="hero-packet" aria-hidden="true" style="left:55%; top:70%; --dx:-60px; --dy:-190px; animation-duration:10s; animation-delay:5s;"></span>
+    <span class="hero-packet" aria-hidden="true" style="left:78%; top:55%; --dx:40px; --dy:-160px; animation-duration:8s; animation-delay:1.5s;"></span>
+    <span class="hero-packet" aria-hidden="true" style="left:35%; top:40%; --dx:-40px; --dy:-140px; animation-duration:12s; animation-delay:4s;"></span>
     <div class="hero-grid">
       <div>
         <div class="eyebrow"><span class="dot pulse"></span>AVAILABLE — OPEN TO TECHNICAL PRODUCT OWNER ROLES</div>
         <h1>Turning complex<br>requirements into <span class="accent">shipped features.</span></h1>
         <p class="lede">
           Technical Product Owner with <strong>5+ years</strong> across software engineering and Agile product ownership.
-          Currently supporting Ericsson R&D's Network Manager (ENM) platform through TCS owning the backlog across
+          Currently supporting Ericsson R&D's Network Manager (ENM) platform through TCS — owning the backlog across
           Configuration, Fault, and Performance Management, and building AI-assisted tooling that keeps delivery visible
           to everyone who depends on it.
         </p>
@@ -563,7 +606,7 @@
         <div class="section-head">
           <h2>About</h2>
         </div>
-        <p>I own the product & backlog for Ericsson Network Manager (ENM) across Configuration, Fault, and
+        <p>I own the product backlog for Ericsson Network Manager (ENM) across Configuration, Fault, and
         Performance Management, translating roadmap priorities and business requirements into user stories,
         acceptance criteria, and sprint-ready backlog items.</p>
         <p>I configured and integrated an enterprise AI agent (<strong>KIRO</strong>) with our Jira, Confluence,
